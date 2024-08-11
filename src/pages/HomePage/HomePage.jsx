@@ -1,6 +1,7 @@
 import "./HomePage.scss";
 import { Paper, Typography, Box, Button, Avatar } from "@mui/material";
 import profile from "../../assets/artist-profile.jpg";
+import { Instagram } from "@mui/icons-material";
 
 function HomePage() {
   return (
@@ -20,13 +21,17 @@ function HomePage() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            gap: 2,
+            py: 2,
+            px: 4,
           }}
         >
           <div>
-            <Avatar sx={{ width: 100, height: 100 }} src={profile}>
-              K
-            </Avatar>
-            <Typography variant="h4">Timantha Warhol</Typography>
+            <Avatar sx={{ width: 100, height: 100 }} src={profile}></Avatar>
+            <Typography variant="subtitle1">Timantha Warhol</Typography>
+            <a href="https://www.instagram.com/annebuckwalter/" target="_blank">
+              <Instagram></Instagram>
+            </a>
           </div>
           <div>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias
