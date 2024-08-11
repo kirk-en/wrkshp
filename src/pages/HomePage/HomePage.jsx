@@ -8,12 +8,17 @@ const artists = [
   {
     name: "Timantha Warhol",
     instagram: "https://www.instagram.com/annebuckwalter/",
-    id: 1000808241,
+    id: 1000808291,
   },
   {
     name: "Jeff Gordon",
     instagram: "https://www.instagram.com/jeffgordonweb",
-    id: 1000808241,
+    id: 1000808221,
+  },
+  {
+    name: "Sid the Sloth",
+    instagram: "https://www.instagram.com/wwf",
+    id: 1002808241,
   },
 ];
 
