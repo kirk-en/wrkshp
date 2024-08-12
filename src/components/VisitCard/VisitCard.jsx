@@ -56,12 +56,7 @@ function VisitCard({ artist }) {
             <Instagram></Instagram>
           </a>
         </div>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias
-          corporis tempore provident. Ab officia placeat tempore ex vitae veniam
-          dolore nemo perferendis! Architecto culpa consequatur, tempora
-          quibusdam dolores corporis excepturi!
-        </div>
+        {/* <div>{artist.about}</div> */}
         <div>
           <Button variant="contained" onClick={handleRSVP}>
             RSVP
