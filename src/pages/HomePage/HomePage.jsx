@@ -52,9 +52,11 @@ const artists = [
 function HomePage() {
   return (
     <>
-      <Typography variant="h1" sx={{ textAlign: "center" }}>
-        wrkshp
-      </Typography>
+      <Box sx={{ height: "15vh" }}>
+        <Typography variant="h1" sx={{ textAlign: "left" }}>
+          wrkshp
+        </Typography>
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -65,14 +67,21 @@ function HomePage() {
         }}
       >
         <Typography variant="h2" sx={{ alignSelf: "flex-end" }}>
-          buy art directly from artist studios
+          buy art directly from artist studios near you.
         </Typography>
         {artists.map((artist) => {
           return (
             <>
-              <Box sx={{ alignSelf: "center" }}>
+              <Box sx={{ alignSelf: "flex-start" }}>
                 <VisitCard artist={artist} key={artist.id} />
-                <Typography>name</Typography>
+                <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
+                  <Typography variant="">
+                    {artist.name.toLowerCase()}
+                  </Typography>
+                  {/* <a href={artist.instagram} target="_blank">
+                    <Instagram></Instagram>
+                  </a> */}
+                </Box>
               </Box>
             </>
           );

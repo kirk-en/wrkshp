@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import profile from "../../assets/artist-profile.jpg";
+import studio from "../../assets/studio-1.jpg";
 import "./VisitCard.scss";
 import { useState } from "react";
 import * as React from "react";
@@ -38,25 +39,25 @@ function VisitCard({ artist }) {
       <Paper
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          justifyContent: "center",
+          alignItems: "flex-end",
           gap: 2,
           py: 2,
           px: 4,
+          height: "70vh",
+          width: "26vh",
+          backgroundImage: `url('${studio}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        <div>
+        {/* <div>
           <Avatar
             sx={{ width: 100, height: 100 }}
             src={profile}
             variant="square"
           ></Avatar>
-          <Typography variant="subtitle1">{artist.name}</Typography>
-          <a href={artist.instagram} target="_blank">
-            <Instagram></Instagram>
-          </a>
-        </div>
-        {/* <div>{artist.about}</div> */}
+        </div> */}
         <div>
           <Button variant="contained" onClick={handleRSVP}>
             RSVP
