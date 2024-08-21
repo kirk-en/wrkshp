@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import profile from "../../assets/artist-profile.jpg";
-import studio from "../../assets/studio-1.jpg";
+import studio from "../../assets/studio-2.jpg";
 import "./VisitCard.scss";
 import { useState } from "react";
 import * as React from "react";
@@ -45,10 +45,12 @@ function VisitCard({ artist }) {
           py: 2,
           px: 4,
           height: "70vh",
-          width: "26vh",
-          backgroundImage: `url('${studio}')`,
+          width: "100%",
+          backgroundImage: `url('${artist.studio}')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: `${
+            artist.studioPos ? artist.studioPos : "center"
+          }`,
         }}
       >
         {/* <div>
