@@ -11,6 +11,7 @@ import {
   DialogActions,
   DialogContent,
   Slide,
+  Modal,
 } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import profile from "../../assets/artist-profile.jpg";
@@ -19,19 +20,41 @@ import "./VisitCard.scss";
 import { useState } from "react";
 import * as React from "react";
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const slideTransition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "95vw",
+  height: "95vh",
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 function VisitCard({ artist }) {
-  const [open, setOpen] = useState(false);
+  const [rsvpOpen, setRsvpOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleRSVP = () => {
-    setOpen(true);
+    setRsvpOpen(true);
   };
-  const handleClose = () => {
+  const handleRsvpClose = () => {
     console.log("dialog closed");
-    setOpen(false);
+    setRsvpOpen(false);
+  };
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    console.log("modal closed");
+    setModalOpen(false);
   };
 
   return (
@@ -52,6 +75,7 @@ function VisitCard({ artist }) {
             artist.studioPos ? artist.studioPos : "center"
           }`,
         }}
+        onClick={handleModalOpen}
       >
         {/* <div>
           <Avatar
@@ -65,10 +89,21 @@ function VisitCard({ artist }) {
             RSVP
           </Button>
         </div>
+
+        <Modal
+          open={modalOpen}
+          onClose={handleModalClose}
+          aria-label={`${artist.name} profile`}
+        >
+          <Box sx={modalStyle}>
+            <Typography>Profile goes here! 🐸</Typography>
+          </Box>
+        </Modal>
+
         <Dialog
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Transition}
+          open={rsvpOpen}
+          onClose={handleRsvpClose}
+          TransitionComponent={slideTransition}
           keepMounted
         >
           <DialogTitle>join us.</DialogTitle>
@@ -123,7 +158,7 @@ function VisitCard({ artist }) {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={handleRsvpClose}>Cancel</Button>
             <Button type="submit">RSVP</Button>
           </DialogActions>
         </Dialog>
