@@ -1,5 +1,5 @@
 import "./HomePage.scss";
-import { Paper, Typography, Box, Button, Avatar } from "@mui/material";
+import { Paper, Typography, Box, Button, Avatar, Grid } from "@mui/material";
 
 import { Instagram } from "@mui/icons-material";
 import VisitCard from "../../components/VisitCard/VisitCard";
@@ -60,7 +60,7 @@ function HomePage() {
   return (
     <>
       <Box sx={{ height: "15vh", display: "flex", alignItems: "center" }}>
-        <Typography variant="h1" sx={{ textAlign: "left" }}>
+        <Typography variant="h1" sx={{}}>
           glyph
         </Typography>
       </Box>
@@ -76,12 +76,11 @@ function HomePage() {
         <Typography variant="h2" sx={{ width: "22vw", alignSelf: "flex-end" }}>
           buy art directly from artist studios near you.
         </Typography>
-
-        {artists.map((artist) => {
-          return (
-            <>
-              <Box sx={{ width: "15vw", alignSelf: "flex-start" }}>
-                <VisitCard artist={artist} key={artist.id} />
+        <Grid container spacing={2}>
+          {artists.map((artist) => {
+            return (
+              <Grid item xs={4} key={artist.id}>
+                <VisitCard artist={artist} />
                 <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
                   <Typography
                     sx={{ pt: 1, fontSize: "1.25rem", fontWeight: "300" }}
@@ -92,10 +91,10 @@ function HomePage() {
                       <Instagram></Instagram>
                     </a> */}
                 </Box>
-              </Box>
-            </>
-          );
-        })}
+              </Grid>
+            );
+          })}
+        </Grid>
       </Box>
     </>
   );
