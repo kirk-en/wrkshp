@@ -12,6 +12,9 @@ import {
   DialogContent,
   Slide,
   Modal,
+  createTheme,
+  ThemeProvider,
+  colors,
 } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import profile from "../../assets/artist-profile.jpg";
@@ -19,6 +22,7 @@ import studio from "../../assets/studio-2.jpg";
 import "./VisitCard.scss";
 import { useState } from "react";
 import * as React from "react";
+import ImageBlock from "../ImageBlock/ImageBlock";
 
 const slideTransition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -29,13 +33,36 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "95vw",
-  height: "95vh",
+  width: "50vw",
+  height: "75vh",
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  overflow: "auto",
 };
+
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: {
+            variant: "glyph",
+          },
+          style: {
+            backgroundColor: "white",
+            border: "solid 1px black",
+            "&:hover": {
+              backgroundColor: "black",
+              color: "white",
+            },
+          },
+        },
+      ],
+    },
+  },
+});
 
 function VisitCard({ artist }) {
   const [rsvpOpen, setRsvpOpen] = useState(false);
@@ -58,7 +85,7 @@ function VisitCard({ artist }) {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Paper
         sx={{
           display: "flex",
@@ -74,96 +101,133 @@ function VisitCard({ artist }) {
           backgroundPosition: `${
             artist.studioPos ? artist.studioPos : "center"
           }`,
+          cursor: "pointer",
         }}
         onClick={handleModalOpen}
       >
-        {/* <div>
-          <Avatar
-            sx={{ width: 100, height: 100 }}
-            src={profile}
-            variant="square"
-          ></Avatar>
-        </div> */}
-        <div>
-          <Button variant="contained" onClick={handleRSVP}>
-            RSVP
-          </Button>
-        </div>
-
-        <Modal
-          open={modalOpen}
-          onClose={handleModalClose}
-          aria-label={`${artist.name} profile`}
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#e0e0e0f0",
+            width: "100%",
+            borderRadius: ".5rem",
+          }}
         >
-          <Box sx={modalStyle}>
-            <Typography>Profile goes here! 🐸</Typography>
-          </Box>
-        </Modal>
-
-        <Dialog
-          open={rsvpOpen}
-          onClose={handleRsvpClose}
-          TransitionComponent={slideTransition}
-          keepMounted
-        >
-          <DialogTitle>join us.</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              {artist.name.toLowerCase()} on (visit.date) in{" "}
-              {artist.neighborhood}
-            </DialogContentText>
-            <div className="rsvp__name-fields">
-              <TextField
-                autoFocus
-                required
-                variant="outlined"
-                id="fname"
-                name="fname"
-                label="first name"
-                type="text"
-                margin="dense"
-                sx={{ pr: 3 }}
-              />
-              <TextField
-                autoFocus
-                required
-                variant="outlined"
-                id="lname"
-                name="lname"
-                label="last name"
-                type="text"
-                margin="dense"
-                sx={{ flexGrow: "2" }}
-              />
-            </div>
-            <TextField
-              required
-              fullWidth
-              variant="outlined"
-              id="email"
-              name="email"
-              label="email"
-              type="email"
-              margin="dense"
-            />
-            <TextField
-              required
-              fullWidth
-              variant="outlined"
-              id="phone"
-              name="phone"
-              label="cell"
-              type="text"
-              margin="dense"
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleRsvpClose}>Cancel</Button>
-            <Button type="submit">RSVP</Button>
-          </DialogActions>
-        </Dialog>
+          <Typography sx={{ p: 1, fontSize: "1.25rem", fontWeight: "300" }}>
+            {artist.name.toLowerCase()}
+          </Typography>
+          {/* <a href={artist.instagram} target="_blank">
+                      <Instagram></Instagram>
+                    </a> */}
+        </Box>
       </Paper>
-    </>
+      <Modal
+        open={modalOpen}
+        onClose={handleModalClose}
+        aria-label={`${artist.name} profile`}
+        disableBackdropClick={false}
+      >
+        <Box sx={modalStyle}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
+            <Avatar
+              sx={{ width: 200, height: 200 }}
+              src={artist.profileImage}
+            ></Avatar>
+            <Typography>{artist.name}</Typography>
+            <Typography>{`(b. ${artist.birthday}, ${artist.pob})`}</Typography>
+            <Button variant="glyph" onClick={handleRSVP}>
+              RSVP
+            </Button>
+            <Typography sx={{ alignSelf: "flex-start" }}>
+              <span className="bold-span">current location: </span>
+              {artist.neighborhood}
+            </Typography>
+            <Typography sx={{ alignSelf: "flex-start" }}>
+              <span className="bold-span">price range: </span>
+              {artist.range}
+            </Typography>
+            <Typography sx={{ alignSelf: "flex-start" }}>
+              <span className="bold-span">description: </span>
+              {artist.about}
+            </Typography>
+            <ImageBlock artworkImgs={artist.artworkImgs} />
+
+            <Dialog
+              open={rsvpOpen}
+              onClose={handleRsvpClose}
+              TransitionComponent={slideTransition}
+              keepMounted
+            >
+              <DialogTitle>join us.</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  {artist.name.toLowerCase()} on (visit.date) in{" "}
+                  {artist.neighborhood}
+                </DialogContentText>
+                <div className="rsvp__name-fields">
+                  <TextField
+                    autoFocus
+                    required
+                    variant="outlined"
+                    id="fname"
+                    name="fname"
+                    label="first name"
+                    type="text"
+                    margin="dense"
+                    sx={{ pr: 3 }}
+                  />
+                  <TextField
+                    autoFocus
+                    required
+                    variant="outlined"
+                    id="lname"
+                    name="lname"
+                    label="last name"
+                    type="text"
+                    margin="dense"
+                    sx={{ flexGrow: "2" }}
+                  />
+                </div>
+                <TextField
+                  required
+                  fullWidth
+                  variant="outlined"
+                  id="email"
+                  name="email"
+                  label="email"
+                  type="email"
+                  margin="dense"
+                />
+                <TextField
+                  required
+                  fullWidth
+                  variant="outlined"
+                  id="phone"
+                  name="phone"
+                  label="cell"
+                  type="text"
+                  margin="dense"
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleRsvpClose}>Cancel</Button>
+                <Button type="submit">RSVP</Button>
+              </DialogActions>
+            </Dialog>
+          </Box>
+        </Box>
+      </Modal>
+    </ThemeProvider>
   );
 }
 
