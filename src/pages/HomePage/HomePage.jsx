@@ -2,6 +2,7 @@ import "./HomePage.scss";
 import { Paper, Typography, Box, Button, Avatar, Grid } from "@mui/material";
 
 import { Instagram } from "@mui/icons-material";
+import logo from "../../assets/logo.png";
 import VisitCard from "../../components/VisitCard/VisitCard";
 
 const generateProfileImageUrl = () => {
@@ -10,29 +11,31 @@ const generateProfileImageUrl = () => {
 
 const artists = [
   {
-    name: "Coming Soon",
+    name: "Avery Collins",
     id: 1000808291,
-    instagram: "https://www.instagram.com/annebuckwalter/",
+    instagram: "https://www.instagram.com/averycollinsart/",
     range: "$2k - $8k",
-    neighborhood: "brooklyn",
+    neighborhood: "Brooklyn",
+    date: "September 14, 2024",
     time: "10:00am ET",
-    cv: "https://www.instagram.com/annebuckwalter/",
+    cv: "https://www.instagram.com/averycollinsart/",
     profileImage: generateProfileImageUrl(),
     birthday: "1993",
     pob: "Alaska",
     studio:
       "https://pyxis.nymag.com/v1/imgs/244/cd6/e538f54607d1200f3ef646a437b8910694-1----.w710.jpg",
     about:
-      "My work addresses the tension between male and female experience in modern day America. I primarily paint figures in day glow colors to express the vivid emotions around this theme.",
+      "I explore themes of identity and place through a combination of abstract and figurative work. My art reflects a deep connection to the landscapes and environments that shape us, with a focus on the interaction between the personal and the universal.",
   },
   {
-    name: "Coming Soon",
+    name: "Mason Bradley",
     id: 1000808292,
-    instagram: "https://www.instagram.com/jeffgordonofficial/",
+    instagram: "https://www.instagram.com/masonbradleyart/",
     range: "$3k - $15k",
-    neighborhood: "charlotte",
+    neighborhood: "Charlotte",
+    date: "September 21, 2024",
     time: "2:00pm ET",
-    cv: "https://www.jeffgordon.com/",
+    cv: "https://www.masonbradleyart.com/",
     profileImage: generateProfileImageUrl(),
     birthday: "1971",
     pob: "California",
@@ -40,24 +43,25 @@ const artists = [
       "https://sistaticv2.blob.core.windows.net/cultured-mag/img/2019/11/SarahFaux_CF050913_sharp.jpg",
     studioPos: "-95px",
     about:
-      "Zooming from the fast lanes of NASCAR to the slow brushstrokes of the canvas, Jeff Gordon redefines what it means to blend speed and artistry. Known for his vivid abstract paintings that evoke the rush of a final lap, Jeff captures the energy and precision that made him a racing legend, now translating it into dynamic splashes of color and form. His work explores the intersection of velocity and emotion, leaving viewers breathless and exhilarated.",
+      "My practice is centered around the exploration of movement and emotion through dynamic compositions. I use color and form to capture fleeting moments, aiming to evoke a visceral response in the viewer.",
   },
   {
-    name: "Coming Soon",
+    name: "Sloane Mitchell",
     id: 1000808293,
-    instagram: "https://www.instagram.com/sidthe_sloth/",
+    instagram: "https://www.instagram.com/sloanemitchellart/",
     range: "$500 - $5k",
-    neighborhood: "prehistoric plains",
+    neighborhood: "Queens",
+    date: "September 7, 2024",
     time: "11:00am ET",
-    cv: "https://www.sidthe_sloth.com/",
+    cv: "https://www.sloanemitchellart.com/",
     profileImage: generateProfileImageUrl(),
-    birthday: "Ice Age",
-    pob: "Pangea",
+    birthday: "1985",
+    pob: "New York",
     studio:
       "https://plus.unsplash.com/premium_photo-1675425205829-f175c8e5f2cd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     studioPos: "-462px",
     about:
-      "Sid the Sloth, the world's most laid-back artist, creates art at a pace only a true sloth could appreciate. With a flair for the unconventional, Sid's work features whimsical depictions of prehistoric life, often using natural elements like mud, leaves, and whatever he finds lying around. His art is a celebration of the simple joys of life—whether it's a leisurely dip in a tar pit or a nap under a canopy of ferns. Sid’s unique perspective invites viewers to slow down and enjoy the moment, one art piece at a time.",
+      "I am driven by a fascination with texture and materiality, often incorporating unconventional materials into my work. My pieces are an exploration of the boundaries between sculpture and painting, creating tactile experiences that invite viewers to engage with the physicality of art.",
   },
 ];
 
@@ -65,9 +69,11 @@ function HomePage() {
   return (
     <>
       <Box sx={{ height: "15vh", display: "flex", alignItems: "center" }}>
-        <Typography variant="h1" sx={{}}>
-          glyph
-        </Typography>
+        <img
+          src={logo}
+          alt="the words glyph in the color yellow with a retro style font"
+          className="logo"
+        />
       </Box>
       <Box
         sx={{

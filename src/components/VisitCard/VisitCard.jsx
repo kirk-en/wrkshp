@@ -12,6 +12,9 @@ import {
   DialogContent,
   Slide,
   Modal,
+  createTheme,
+  ThemeProvider,
+  colors,
 } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import profile from "../../assets/artist-profile.jpg";
@@ -29,13 +32,35 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "75vw",
+  width: "50vw",
   height: "75vh",
   bgcolor: "background.paper",
   // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
+
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: {
+            variant: "glyph",
+          },
+          style: {
+            backgroundColor: "white",
+            border: "solid 1px black",
+            "&:hover": {
+              backgroundColor: "black",
+              color: "white",
+            },
+          },
+        },
+      ],
+    },
+  },
+});
 
 function VisitCard({ artist }) {
   const [rsvpOpen, setRsvpOpen] = useState(false);
@@ -58,7 +83,7 @@ function VisitCard({ artist }) {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Paper
         sx={{
           display: "flex",
@@ -84,19 +109,36 @@ function VisitCard({ artist }) {
         disableBackdropClick={false}
       >
         <Box sx={modalStyle}>
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
             <Avatar
               sx={{ width: 200, height: 200 }}
               src={artist.profileImage}
             ></Avatar>
             <Typography>{artist.name}</Typography>
-            <Typography>{`b. ${artist.birthday}, ${artist.pob}`}</Typography>
-            <Button variant="contained" onClick={handleRSVP}>
+            <Typography>{`(b. ${artist.birthday}, ${artist.pob})`}</Typography>
+            <Button variant="glyph" onClick={handleRSVP}>
               RSVP
             </Button>
-            <Typography>{`current location: ${artist.neighborhood}`}</Typography>
-            <Typography>{`price range: ${artist.range}`}</Typography>
-            <Typography>{`desc: ${artist.about}`}</Typography>
+            <Typography sx={{ alignSelf: "flex-start" }}>
+              <span className="bold-span">current location: </span>
+              {artist.neighborhood}
+            </Typography>
+            <Typography sx={{ alignSelf: "flex-start" }}>
+              <span className="bold-span">price range: </span>
+              {artist.range}
+            </Typography>
+            <Typography sx={{ alignSelf: "flex-start" }}>
+              <span className="bold-span">description: </span>
+              {artist.about}
+            </Typography>
+
             <Dialog
               open={rsvpOpen}
               onClose={handleRsvpClose}
@@ -162,7 +204,7 @@ function VisitCard({ artist }) {
           </Box>
         </Box>
       </Modal>
-    </>
+    </ThemeProvider>
   );
 }
 
