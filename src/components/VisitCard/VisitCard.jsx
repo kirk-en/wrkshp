@@ -22,6 +22,7 @@ import studio from "../../assets/studio-2.jpg";
 import "./VisitCard.scss";
 import { useState } from "react";
 import * as React from "react";
+import ImageBlock from "../ImageBlock/ImageBlock";
 
 const slideTransition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -38,6 +39,7 @@ const modalStyle = {
   // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  overflow: "auto",
 };
 
 const theme = createTheme({
@@ -138,6 +140,7 @@ function VisitCard({ artist }) {
               <span className="bold-span">description: </span>
               {artist.about}
             </Typography>
+            <ImageBlock artworkImgs={artist.artworkImgs} />
 
             <Dialog
               open={rsvpOpen}
