@@ -29,8 +29,8 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "95vw",
-  height: "95vh",
+  width: "75vw",
+  height: "75vh",
   bgcolor: "background.paper",
   // border: "2px solid #000",
   boxShadow: 24,
@@ -84,74 +84,82 @@ function VisitCard({ artist }) {
         disableBackdropClick={false}
       >
         <Box sx={modalStyle}>
-          <Typography>Profile goes here! 🐸</Typography>
-          <div>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Avatar
+              sx={{ width: 200, height: 200 }}
+              src={artist.profileImage}
+            ></Avatar>
+            <Typography>{artist.name}</Typography>
+            <Typography>{`b. ${artist.birthday}, ${artist.pob}`}</Typography>
             <Button variant="contained" onClick={handleRSVP}>
               RSVP
             </Button>
-          </div>
-          <Dialog
-            open={rsvpOpen}
-            onClose={handleRsvpClose}
-            TransitionComponent={slideTransition}
-            keepMounted
-          >
-            <DialogTitle>join us.</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                {artist.name.toLowerCase()} on (visit.date) in{" "}
-                {artist.neighborhood}
-              </DialogContentText>
-              <div className="rsvp__name-fields">
+            <Typography>{`current location: ${artist.neighborhood}`}</Typography>
+            <Typography>{`price range: ${artist.range}`}</Typography>
+            <Typography>{`desc: ${artist.about}`}</Typography>
+            <Dialog
+              open={rsvpOpen}
+              onClose={handleRsvpClose}
+              TransitionComponent={slideTransition}
+              keepMounted
+            >
+              <DialogTitle>join us.</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  {artist.name.toLowerCase()} on (visit.date) in{" "}
+                  {artist.neighborhood}
+                </DialogContentText>
+                <div className="rsvp__name-fields">
+                  <TextField
+                    autoFocus
+                    required
+                    variant="outlined"
+                    id="fname"
+                    name="fname"
+                    label="first name"
+                    type="text"
+                    margin="dense"
+                    sx={{ pr: 3 }}
+                  />
+                  <TextField
+                    autoFocus
+                    required
+                    variant="outlined"
+                    id="lname"
+                    name="lname"
+                    label="last name"
+                    type="text"
+                    margin="dense"
+                    sx={{ flexGrow: "2" }}
+                  />
+                </div>
                 <TextField
-                  autoFocus
                   required
+                  fullWidth
                   variant="outlined"
-                  id="fname"
-                  name="fname"
-                  label="first name"
-                  type="text"
+                  id="email"
+                  name="email"
+                  label="email"
+                  type="email"
                   margin="dense"
-                  sx={{ pr: 3 }}
                 />
                 <TextField
-                  autoFocus
                   required
+                  fullWidth
                   variant="outlined"
-                  id="lname"
-                  name="lname"
-                  label="last name"
+                  id="phone"
+                  name="phone"
+                  label="cell"
                   type="text"
                   margin="dense"
-                  sx={{ flexGrow: "2" }}
                 />
-              </div>
-              <TextField
-                required
-                fullWidth
-                variant="outlined"
-                id="email"
-                name="email"
-                label="email"
-                type="email"
-                margin="dense"
-              />
-              <TextField
-                required
-                fullWidth
-                variant="outlined"
-                id="phone"
-                name="phone"
-                label="cell"
-                type="text"
-                margin="dense"
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleRsvpClose}>Cancel</Button>
-              <Button type="submit">RSVP</Button>
-            </DialogActions>
-          </Dialog>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleRsvpClose}>Cancel</Button>
+                <Button type="submit">RSVP</Button>
+              </DialogActions>
+            </Dialog>
+          </Box>
         </Box>
       </Modal>
     </>

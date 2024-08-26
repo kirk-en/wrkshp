@@ -4,6 +4,10 @@ import { Paper, Typography, Box, Button, Avatar, Grid } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import VisitCard from "../../components/VisitCard/VisitCard";
 
+const generateProfileImageUrl = () => {
+  return `https://thispersondoesnotexist.com/?random=${Math.random()}`;
+};
+
 const artists = [
   {
     name: "Coming Soon",
@@ -13,7 +17,7 @@ const artists = [
     neighborhood: "brooklyn",
     time: "10:00am ET",
     cv: "https://www.instagram.com/annebuckwalter/",
-    profileImage: "image",
+    profileImage: generateProfileImageUrl(),
     birthday: "1993",
     pob: "Alaska",
     studio:
@@ -29,7 +33,7 @@ const artists = [
     neighborhood: "charlotte",
     time: "2:00pm ET",
     cv: "https://www.jeffgordon.com/",
-    profileImage: "image",
+    profileImage: generateProfileImageUrl(),
     birthday: "1971",
     pob: "California",
     studio:
@@ -46,13 +50,14 @@ const artists = [
     neighborhood: "prehistoric plains",
     time: "11:00am ET",
     cv: "https://www.sidthe_sloth.com/",
-    profileImage: "image",
+    profileImage: generateProfileImageUrl(),
     birthday: "Ice Age",
     pob: "Pangea",
     studio:
       "https://plus.unsplash.com/premium_photo-1675425205829-f175c8e5f2cd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    studioPos: "-462px",
     about:
-      "Sid the Sloth, the world's most laid-back artist, creates art at a pace only a true sloth could appreciate.",
+      "Sid the Sloth, the world's most laid-back artist, creates art at a pace only a true sloth could appreciate. With a flair for the unconventional, Sid's work features whimsical depictions of prehistoric life, often using natural elements like mud, leaves, and whatever he finds lying around. His art is a celebration of the simple joys of life—whether it's a leisurely dip in a tar pit or a nap under a canopy of ferns. Sid’s unique perspective invites viewers to slow down and enjoy the moment, one art piece at a time.",
   },
 ];
 
