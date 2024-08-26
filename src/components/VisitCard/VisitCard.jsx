@@ -101,9 +101,29 @@ function VisitCard({ artist }) {
           backgroundPosition: `${
             artist.studioPos ? artist.studioPos : "center"
           }`,
+          cursor: "pointer",
         }}
         onClick={handleModalOpen}
-      ></Paper>
+      >
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#e0e0e0f0",
+            width: "100%",
+            borderRadius: ".5rem",
+          }}
+        >
+          <Typography sx={{ p: 1, fontSize: "1.25rem", fontWeight: "300" }}>
+            {artist.name.toLowerCase()}
+          </Typography>
+          {/* <a href={artist.instagram} target="_blank">
+                      <Instagram></Instagram>
+                    </a> */}
+        </Box>
+      </Paper>
       <Modal
         open={modalOpen}
         onClose={handleModalClose}
