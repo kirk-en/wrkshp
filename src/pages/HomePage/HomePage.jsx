@@ -15,7 +15,7 @@ const artists = [
     id: 1000808291,
     instagram: "https://www.instagram.com/averycollinsart/",
     range: "$2k - $8k",
-    neighborhood: "Brooklyn",
+    neighborhood: "Brooklyn, NY",
     date: "September 14, 2024",
     time: "10:00am ET",
     cv: "https://www.instagram.com/averycollinsart/",
@@ -47,7 +47,7 @@ const artists = [
     id: 1000808292,
     instagram: "https://www.instagram.com/masonbradleyart/",
     range: "$3k - $15k",
-    neighborhood: "Charlotte",
+    neighborhood: "SoHo, NY",
     date: "September 21, 2024",
     time: "2:00pm ET",
     cv: "https://www.masonbradleyart.com/",
@@ -80,7 +80,7 @@ const artists = [
     id: 1000808293,
     instagram: "https://www.instagram.com/sloanemitchellart/",
     range: "$500 - $5k",
-    neighborhood: "Queens",
+    neighborhood: "Queens, NY",
     date: "September 7, 2024",
     time: "11:00am ET",
     cv: "https://www.sloanemitchellart.com/",
@@ -114,7 +114,7 @@ const artists = [
 function HomePage() {
   return (
     <>
-      <Box sx={{ height: "15vh", display: "flex", alignItems: "center" }}>
+      <Box sx={{ height: "10vh", display: "flex", alignItems: "center" }}>
         <img
           src={logo}
           alt="the words glyph in the color yellow with a retro style font"
@@ -126,11 +126,12 @@ function HomePage() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          alignItems: "flex-end",
           gap: 2,
           height: "80vh",
         }}
       >
-        <Typography variant="h2" sx={{ width: "22vw", alignSelf: "flex-end" }}>
+        <Typography variant="h2" sx={{ width: "22vw" }}>
           buy art directly from artist studios near you.
         </Typography>
         <Grid container spacing={2}>

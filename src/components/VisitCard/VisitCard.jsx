@@ -53,6 +53,7 @@ const theme = createTheme({
           style: {
             backgroundColor: "white",
             border: "solid 1px black",
+            textTransform: "lowercase",
             "&:hover": {
               backgroundColor: "black",
               color: "white",
@@ -94,7 +95,7 @@ function VisitCard({ artist }) {
           gap: 2,
           py: 2,
           px: 4,
-          height: "70vh",
+          height: "75vh",
           width: "100%",
           backgroundImage: `url('${artist.studio}')`,
           backgroundSize: "cover",
@@ -140,17 +141,22 @@ function VisitCard({ artist }) {
             }}
           >
             <Avatar
-              sx={{ width: 200, height: 200 }}
+              sx={{ width: 150, height: 150 }}
               src={artist.profileImage}
             ></Avatar>
-            <Typography>{artist.name}</Typography>
-            <Typography>{`(b. ${artist.birthday}, ${artist.pob})`}</Typography>
+            <Typography textAlign={"center"}>
+              {artist.name.toLowerCase()} <br />
+              {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
+            </Typography>
+            {/* <Typography>{`(b. ${
+              artist.birthday
+            }, ${artist.pob.toLowerCase()})`}</Typography> */}
             <Button variant="glyph" onClick={handleRSVP}>
-              RSVP
+              visit studio
             </Button>
             <Typography sx={{ alignSelf: "flex-start" }}>
               <span className="bold-span">current location: </span>
-              {artist.neighborhood}
+              {artist.neighborhood.toLowerCase()}
             </Typography>
             <Typography sx={{ alignSelf: "flex-start" }}>
               <span className="bold-span">price range: </span>
@@ -171,8 +177,8 @@ function VisitCard({ artist }) {
               <DialogTitle>join us.</DialogTitle>
               <DialogContent>
                 <DialogContentText>
-                  {artist.name.toLowerCase()} on (visit.date) in{" "}
-                  {artist.neighborhood}
+                  {artist.name.toLowerCase()} on {artist.date.toLowerCase()} in{" "}
+                  {artist.neighborhood.toLowerCase()}
                 </DialogContentText>
                 <div className="rsvp__name-fields">
                   <TextField
