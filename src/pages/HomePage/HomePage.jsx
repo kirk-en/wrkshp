@@ -114,7 +114,14 @@ const artists = [
 function HomePage() {
   return (
     <>
-      <Box sx={{ height: "10vh", display: "flex", alignItems: "center" }}>
+      <Box
+        sx={{
+          height: "10vh",
+          display: "flex",
+          alignItems: "center",
+          paddingTop: "1rem",
+        }}
+      >
         <img
           src={logo}
           alt="the words glyph in the color yellow with a retro style font"
