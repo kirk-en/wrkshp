@@ -15,6 +15,7 @@ import {
   createTheme,
   ThemeProvider,
   colors,
+  useMediaQuery,
 } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import profile from "../../assets/artist-profile.jpg";
@@ -27,20 +28,6 @@ import ImageBlock from "../ImageBlock/ImageBlock";
 const slideTransition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "50vw",
-  height: "75vh",
-  bgcolor: "background.paper",
-  // border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-  overflow: "auto",
-};
 
 const theme = createTheme({
   components: {
@@ -66,6 +53,25 @@ const theme = createTheme({
 });
 
 function VisitCard({ artist }) {
+  const tablet = useMediaQuery("(min-width:768px)");
+  const modalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "100vw",
+    height: "90vh",
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+    overflow: "auto",
+    ...(tablet && {
+      width: "50vw",
+      height: "75vh",
+    }),
+  };
+
   const [rsvpOpen, setRsvpOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -132,6 +138,7 @@ function VisitCard({ artist }) {
         disableBackdropClick={false}
       >
         <Box sx={modalStyle}>
+          {/* FLEX INFO SEC AND IMAGES */}
           <Box
             sx={{
               display: "flex",
@@ -140,43 +147,73 @@ function VisitCard({ artist }) {
               gap: 2,
             }}
           >
+            {/* FLEX INFO LEFT AND RIGHT */}
             <Box
               sx={{
                 display: "flex",
                 gap: 2,
                 justifyContent: "space-between",
-                alignItems: "flex-end",
+                alignItems: "flex-start",
+                flexDirection: "column",
+                ...(tablet && {
+                  flexDirection: "row",
+                }),
               }}
             >
-              <Box>
+              {/* FLEX INFO LEFT */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  height: "100%",
+                  minHeight: "9.5rem",
+                  gap: 1,
+                }}
+              >
                 <Avatar
                   sx={{ width: 150, height: 150 }}
                   src={artist.profileImage}
                 ></Avatar>
-                <Typography>
-                  {artist.name.toLowerCase()} <br />
-                  {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
-                </Typography>
                 <Button variant="glyph" onClick={handleRSVP}>
                   visit studio
                 </Button>
               </Box>
-              <Box>
-                <Typography sx={{ alignSelf: "flex-start" }}>
+              {/* FLEX INFO RIGHT */}
+              <Box sx={{ flex: 1 }}>
+                <Typography>
+                  {artist.name.toLowerCase()} <br />
+                  {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
+                </Typography>
+                <Typography sx={{ pt: 2 }}>
+                  <span className="bold-span">artist statement: </span>
+                  {artist.about}
+                </Typography>
+                <Typography sx={{ pt: 2 }}>
                   <span className="bold-span">current location: </span>
                   {artist.neighborhood.toLowerCase()}
                 </Typography>
-                <Typography sx={{ alignSelf: "flex-start" }}>
+                <Typography>
                   <span className="bold-span">price range: </span>
                   {artist.range}
-                </Typography>
-                <Typography sx={{ alignSelf: "flex-start" }}>
-                  <span className="bold-span">description: </span>
-                  {artist.about}
                 </Typography>
               </Box>
             </Box>
             <ImageBlock artworkImgs={artist.artworkImgs} />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                ...(tablet && {
+                  display: "none",
+                }),
+              }}
+            >
+              <Button variant="glyph" onClick={handleModalClose}>
+                close
+              </Button>
+            </Box>
 
             <Dialog
               open={rsvpOpen}

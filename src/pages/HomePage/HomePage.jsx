@@ -4,6 +4,7 @@ import { Paper, Typography, Box, Button, Avatar, Grid } from "@mui/material";
 import { Instagram } from "@mui/icons-material";
 import logo from "../../assets/logo.png";
 import VisitCard from "../../components/VisitCard/VisitCard";
+import "./HomePage.scss";
 
 const generateProfileImageUrl = () => {
   return `https://thispersondoesnotexist.com/?random=${Math.random()}`;
@@ -37,7 +38,6 @@ const artists = [
       "https://images.unsplash.com/photo-1580711508381-9934107eb02c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
       "https://images.unsplash.com/photo-1654663477425-acf704a970d7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
       "https://images.unsplash.com/photo-1579009120005-df2fd9baf7e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
-      "https://images.unsplash.com/photo-1578321709412-0fa051e5bb79?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
     ],
     about:
       "I explore themes of identity and place through a combination of abstract and figurative work. My art reflects a deep connection to the landscapes and environments that shape us, with a focus on the interaction between the personal and the universal.",
@@ -101,7 +101,6 @@ const artists = [
       "https://images.unsplash.com/photo-1578321272125-4e4c4c3643c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
       "https://images.unsplash.com/photo-1580711508381-9934107eb02c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
       "https://images.unsplash.com/photo-1575995874161-325b260c9b1c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D",
-      "https://images.unsplash.com/photo-1631792510680-8883d3d26270?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
     ],
 
     studioPos: "-462px",
@@ -113,53 +112,50 @@ const artists = [
 function HomePage() {
   return (
     <>
-      <Box
-        sx={{
-          height: "10vh",
-          display: "flex",
-          alignItems: "center",
-          paddingTop: "1rem",
-        }}
-      >
+      {/* LOGO DIV */}
+      <header className="header">
         <img
           src={logo}
           alt="the words glyph in the color yellow with a retro style font"
-          className="logo"
+          className="header__logo"
         />
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "flex-end",
-          gap: 2,
-          height: "80vh",
-        }}
-      >
-        <Typography variant="h2" sx={{ width: "22vw" }}>
+        <p className="header__tagline">
+          buy art directly from artist studios near you.
+        </p>
+      </header>
+
+      <main className="main">
+        <Typography
+          variant="h2"
+          sx={{ width: "22vw" }}
+          className="main__tagline"
+        >
           buy art directly from artist studios near you.
         </Typography>
-        <Grid container spacing={2}>
-          {artists.map((artist) => {
-            return (
-              <Grid item xs={4} key={artist.id}>
-                <VisitCard artist={artist} />
-                <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
-                  {/* <Typography
-                    sx={{ pt: 1, fontSize: "1.25rem", fontWeight: "300" }}
+        <div className="main__grid-container">
+          <Grid container spacing={2}>
+            {artists.map((artist) => {
+              return (
+                <Grid item xs={6} sm={4} key={artist.id}>
+                  <VisitCard artist={artist} />
+                  <Box
+                    sx={{ display: "flex", gap: 1, justifyContent: "center" }}
                   >
-                    {artist.name.toLowerCase()}
-                  </Typography> */}
-                  {/* <a href={artist.instagram} target="_blank">
-                      <Instagram></Instagram>
-                    </a> */}
-                </Box>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Box>
+                    {/* <Typography
+                      sx={{ pt: 1, fontSize: "1.25rem", fontWeight: "300" }}
+                    >
+                      {artist.name.toLowerCase()}
+                    </Typography> */}
+                    {/* <a href={artist.instagram} target="_blank">
+                        <Instagram></Instagram>
+                      </a> */}
+                  </Box>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </div>
+      </main>
     </>
   );
 }

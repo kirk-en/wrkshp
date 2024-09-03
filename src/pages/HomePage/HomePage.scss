@@ -1,4 +1,54 @@
-.logo {
-  max-width: 20rem;
-  max-height: 100%;
+@use "../../styles/partials/mixins.scss" as *;
+
+.header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 0 0;
+  &__logo {
+    max-width: 20rem;
+    max-height: 100%;
+  }
+  &__tagline {
+    width: 10rem;
+    max-height: 7.1875rem;
+    align-self: flex-start;
+    font-size: 1rem;
+    @media (min-width: 363px) {
+      font-size: 1.2rem;
+    }
+    @media (min-width: 420px) {
+      font-size: 1.5rem;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-top: 4rem;
+  @include tablet {
+    height: 80vh;
+    align-items: flex-end;
+  }
+  &__tagline {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+  &__grid-container {
+    overflow: scroll;
+    height: 100%;
+    @include tablet {
+      overflow: visible;
+    }
+  }
 }

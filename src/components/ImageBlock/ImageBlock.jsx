@@ -1,8 +1,10 @@
-import { ImageList, ImageListItem, Dialog } from "@mui/material";
+import { ImageList, ImageListItem, Dialog, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import "./ImageBlock.scss";
 
 const ImageBlock = ({ artworkImgs }) => {
+  const tablet = useMediaQuery("(min-width:768px)");
+
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
@@ -17,22 +19,18 @@ const ImageBlock = ({ artworkImgs }) => {
 
   return (
     <>
-      <ImageList cols={3} gap={2} rowHeight={164}>
+      <ImageList cols={3} gap={2}>
         {artworkImgs.map((artwork) => {
           return (
             <ImageListItem
               key={artwork.url}
               onClick={() => handleClickOpen(artwork)}
-              style={{
-                width: "15vw", // Ensures each item is square
-                height: "15vw", // Matches the rowHeight
-              }}
+              className="image-block__list-item"
             >
               <img
                 src={`${artwork}?fit=crop&auto=format`}
                 alt=""
                 loading="lazy"
-                className="image-block__image"
                 style={{
                   cursor: "pointer",
                   width: "100%",

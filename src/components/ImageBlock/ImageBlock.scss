@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins.scss" as *;
+
+.image-block {
+  &__list-item {
+    width: 28vw;
+    height: 28vw !important;
+    @include tablet {
+      width: 15vw;
+      height: 15vw !important;
+    }
+  }
+}
