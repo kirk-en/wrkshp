@@ -69,7 +69,6 @@ const artists = [
       "https://plus.unsplash.com/premium_photo-1669749216793-040be16ade1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D",
       "https://images.unsplash.com/photo-1580711508381-9934107eb02c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fG9pbCUyMHBhaW50aW5nfGVufDB8fDB8fHww",
       "https://images.unsplash.com/photo-1578320743746-788d990bd318?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D",
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2lsJTIwcGFpbnRpbmd8ZW58MHx8MHx8fDA%3D",
     ],
     studioPos: "-95px",
     about:

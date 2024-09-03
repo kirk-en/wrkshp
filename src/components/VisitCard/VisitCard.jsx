@@ -136,36 +136,46 @@ function VisitCard({ artist }) {
             sx={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
+              alignItems: "flex-start",
               gap: 2,
             }}
           >
-            <Avatar
-              sx={{ width: 150, height: 150 }}
-              src={artist.profileImage}
-            ></Avatar>
-            <Typography textAlign={"center"}>
-              {artist.name.toLowerCase()} <br />
-              {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
-            </Typography>
-            {/* <Typography>{`(b. ${
-              artist.birthday
-            }, ${artist.pob.toLowerCase()})`}</Typography> */}
-            <Button variant="glyph" onClick={handleRSVP}>
-              visit studio
-            </Button>
-            <Typography sx={{ alignSelf: "flex-start" }}>
-              <span className="bold-span">current location: </span>
-              {artist.neighborhood.toLowerCase()}
-            </Typography>
-            <Typography sx={{ alignSelf: "flex-start" }}>
-              <span className="bold-span">price range: </span>
-              {artist.range}
-            </Typography>
-            <Typography sx={{ alignSelf: "flex-start" }}>
-              <span className="bold-span">description: </span>
-              {artist.about}
-            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                justifyContent: "space-between",
+                alignItems: "flex-end",
+              }}
+            >
+              <Box>
+                <Avatar
+                  sx={{ width: 150, height: 150 }}
+                  src={artist.profileImage}
+                ></Avatar>
+                <Typography>
+                  {artist.name.toLowerCase()} <br />
+                  {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
+                </Typography>
+                <Button variant="glyph" onClick={handleRSVP}>
+                  visit studio
+                </Button>
+              </Box>
+              <Box>
+                <Typography sx={{ alignSelf: "flex-start" }}>
+                  <span className="bold-span">current location: </span>
+                  {artist.neighborhood.toLowerCase()}
+                </Typography>
+                <Typography sx={{ alignSelf: "flex-start" }}>
+                  <span className="bold-span">price range: </span>
+                  {artist.range}
+                </Typography>
+                <Typography sx={{ alignSelf: "flex-start" }}>
+                  <span className="bold-span">description: </span>
+                  {artist.about}
+                </Typography>
+              </Box>
+            </Box>
             <ImageBlock artworkImgs={artist.artworkImgs} />
 
             <Dialog
