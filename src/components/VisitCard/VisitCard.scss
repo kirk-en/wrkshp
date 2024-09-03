@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixins.scss" as *;
+
 .rsvp {
   &__name-fields {
     display: flex;
