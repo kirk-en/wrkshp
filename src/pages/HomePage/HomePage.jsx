@@ -121,15 +121,32 @@ function HomePage() {
           alt="the words glyph in the color yellow with a retro style font"
           className="header__logo"
         />
-        <p className="header__tagline">
+        <Typography
+          className="header__tagline"
+          variant="subtitle1"
+          sx={{
+            fontSize: { xs: 25, sm: 25, md: 35 },
+            fontWeight: "100",
+            lineHeight: "1",
+            pt: 1,
+          }}
+        >
           buy art directly from artist studios near you.
-        </p>
+        </Typography>
       </header>
 
       <main className="main">
         <Typography
-          variant="h2"
-          sx={{ width: "22vw" }}
+          variant="h3"
+          sx={{
+            fontWeight: "100",
+            width: {
+              md: "14rem",
+            },
+            fontSize: {
+              md: "2.25rem", // Above 944px wide
+            },
+          }}
           className="main__tagline"
         >
           buy art directly from artist studios near you.
@@ -140,18 +157,6 @@ function HomePage() {
               return (
                 <Grid item xs={6} sm={4} key={artist.id}>
                   <VisitCard artist={artist} />
-                  <Box
-                    sx={{ display: "flex", gap: 1, justifyContent: "center" }}
-                  >
-                    {/* <Typography
-                      sx={{ pt: 1, fontSize: "1.25rem", fontWeight: "300" }}
-                    >
-                      {artist.name.toLowerCase()}
-                    </Typography> */}
-                    {/* <a href={artist.instagram} target="_blank">
-                        <Instagram></Instagram>
-                      </a> */}
-                  </Box>
                 </Grid>
               );
             })}

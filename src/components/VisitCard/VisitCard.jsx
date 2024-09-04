@@ -101,7 +101,10 @@ function VisitCard({ artist }) {
           gap: 2,
           py: 2,
           px: 4,
-          height: "75vh",
+          height: {
+            xs: "55vh",
+            sm: "75vh",
+          },
           width: "100%",
           backgroundImage: `url('${artist.studio}')`,
           backgroundSize: "cover",
@@ -123,7 +126,14 @@ function VisitCard({ artist }) {
             borderRadius: ".5rem",
           }}
         >
-          <Typography sx={{ p: 1, fontSize: "1.25rem", fontWeight: "300" }}>
+          <Typography
+            sx={{
+              p: 1,
+              fontSize: { xs: ".75rem", sm: "1rem", md: "1.25rem" },
+              fontWeight: "300",
+              textAlign: "center",
+            }}
+          >
             {artist.name.toLowerCase()}
           </Typography>
           {/* <a href={artist.instagram} target="_blank">
@@ -155,12 +165,28 @@ function VisitCard({ artist }) {
                 justifyContent: "space-between",
                 alignItems: "flex-start",
                 flexDirection: "column",
+                mt: "-4rem",
                 ...(tablet && {
                   flexDirection: "row",
+                  mt: 0,
                 }),
               }}
             >
               {/* FLEX INFO LEFT */}
+              <Button
+                variant="glyph"
+                onClick={handleModalClose}
+                sx={{
+                  position: "relative",
+                  left: "85%",
+                  top: "3rem",
+                  ...(tablet && {
+                    display: "none",
+                  }),
+                }}
+              >
+                x
+              </Button>
               <Box
                 sx={{
                   display: "flex",
@@ -172,9 +198,13 @@ function VisitCard({ artist }) {
                 }}
               >
                 <Avatar
-                  sx={{ width: 150, height: 150 }}
+                  sx={{ width: 150, height: 150, mb: 1 }}
                   src={artist.profileImage}
                 ></Avatar>
+                <Typography>
+                  {artist.name.toLowerCase()} <br />
+                  {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
+                </Typography>
                 <Button variant="glyph" onClick={handleRSVP}>
                   visit studio
                 </Button>
@@ -182,10 +212,6 @@ function VisitCard({ artist }) {
               {/* FLEX INFO RIGHT */}
               <Box sx={{ flex: 1 }}>
                 <Typography>
-                  {artist.name.toLowerCase()} <br />
-                  {`(b. ${artist.birthday}, ${artist.pob.toLowerCase()})`}
-                </Typography>
-                <Typography sx={{ pt: 2 }}>
                   <span className="bold-span">artist statement: </span>
                   {artist.about}
                 </Typography>
