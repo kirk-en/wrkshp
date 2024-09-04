@@ -1,27 +1,42 @@
 @use "../../styles/partials/mixins.scss" as *;
 
 .header {
-  height: 10vh;
+  // height: 20vh;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: 1rem 0 0 0;
+  margin-bottom: 2rem;
+  @include tablet {
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+  @include desktop {
+    // height: 15vh;
+  }
   &__logo {
     max-width: 20rem;
-    max-height: 100%;
+    @include tablet {
+      max-width: 26rem;
+      // max-height: 100%;
+    }
   }
   &__tagline {
-    width: 10rem;
+    width: 18rem;
     max-height: 7.1875rem;
-    align-self: flex-start;
-    font-size: 1rem;
-    @media (min-width: 363px) {
-      font-size: 1.2rem;
-    }
-    @media (min-width: 420px) {
-      font-size: 1.5rem;
-    }
+    // font-size: 1rem;
+    // text-align: center;
+    // @media (min-width: 363px) {
+    //   font-size: 1.2rem;
+    // }
+    // @media (min-width: 420px) {
+    //   font-size: 1.5rem;
+    // }
     @include tablet {
+      text-align: left;
+    }
+    @include desktop {
       display: none;
     }
   }
@@ -33,20 +48,20 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 1rem;
-  padding-top: 4rem;
+  // padding-top: 4rem;
   @include tablet {
-    height: 80vh;
+    // height: 80vh;
     align-items: flex-end;
   }
   &__tagline {
     display: none;
-    @include tablet {
+    @include desktop {
       display: block;
     }
   }
   &__grid-container {
     overflow: scroll;
-    height: 100%;
+    flex-grow: 2;
     @include tablet {
       overflow: visible;
     }
