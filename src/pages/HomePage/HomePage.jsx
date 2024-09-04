@@ -18,7 +18,7 @@ const artists = [
     range: "$2k - $8k",
     neighborhood: "Brooklyn, NY",
     date: "September 14, 2024",
-    time: "10:00am ET",
+    time: "10:00am - 11:00am ET",
     cv: "https://www.instagram.com/averycollinsart/",
     profileImage:
       "https://mymodernmet.com/wp/wp-content/uploads/2021/10/egon-schiele-0.jpeg",
@@ -50,7 +50,7 @@ const artists = [
     range: "$3k - $15k",
     neighborhood: "SoHo, NY",
     date: "September 21, 2024",
-    time: "2:00pm ET",
+    time: "2:00pm - 3:00pm ET",
     cv: "https://www.masonbradleyart.com/",
     profileImage:
       "https://d7hftxdivxxvm.cloudfront.net/?height=800&quality=85&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0Xic80p4D5RbEMGvQEmYFQ%2Fnormalized.jpg&width=636",
@@ -72,9 +72,9 @@ const artists = [
       "https://sothebys-md.brightspotcdn.com/webnative/images/ee/0a/4431d87f4d1aa349a9308a1c53eb/de2360-cszyy-t2-01.jpg",
       "https://sothebys-md.brightspotcdn.com/03/89/d89f8a80467ebe49879992bb4601/n11349-bb5m9-t1-10.jpg",
     ],
-    studioPos: "-255px",
+    studioPos: "-155px",
     about:
-      "My practice is centered around the exploration of movement and emotion through dynamic compositions. I use color and form to capture fleeting moments, aiming to evoke a visceral response in the viewer.",
+      "Andy Warhol was a pioneering figure in the Pop Art movement, known for transforming everyday objects and celebrity culture into high art. His work often involved a process of mass production, using techniques like silk-screening to create multiple versions of a single image, reflecting his fascination with consumerism and media. The content of his art frequently explored themes of fame, consumer culture, and the blurring of boundaries between high and low art, as seen in his iconic depictions of Campbell's soup cans and Marilyn Monroe.",
   },
   {
     name: "Francis Bacon",
@@ -83,7 +83,7 @@ const artists = [
     range: "$500 - $5k",
     neighborhood: "Queens, NY",
     date: "September 7, 2024",
-    time: "11:00am ET",
+    time: "11:00am - 12:00pm ET",
     cv: "https://www.sloanemitchellart.com/",
     profileImage:
       "https://thatswhatidliketoknow.wordpress.com/wp-content/uploads/2014/02/francisbaconartist.jpg",
