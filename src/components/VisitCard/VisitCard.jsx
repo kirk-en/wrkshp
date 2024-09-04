@@ -247,10 +247,13 @@ function VisitCard({ artist }) {
               TransitionComponent={slideTransition}
               keepMounted
             >
-              <DialogTitle>join us.</DialogTitle>
+              <DialogTitle sx={{ textAlign: "center" }}>rsvp</DialogTitle>
               <DialogContent>
-                <DialogContentText>
-                  {artist.name.toLowerCase()} on {artist.date.toLowerCase()} in{" "}
+                <DialogContentText sx={{ pb: 1 }}>
+                  <span className="bold-span">date:</span>{" "}
+                  {artist.date.toLowerCase()} <br />
+                  <span className="bold-span">time:</span> {artist.time} <br />
+                  <span className="bold-span">location:</span>{" "}
                   {artist.neighborhood.toLowerCase()}
                 </DialogContentText>
                 <div className="rsvp__name-fields">
@@ -297,6 +300,9 @@ function VisitCard({ artist }) {
                   type="text"
                   margin="dense"
                 />
+                <DialogContentText sx={{ fontSize: ".75rem", pt: 1 }}>
+                  Confirmation will be emailed to the address above.
+                </DialogContentText>
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleRsvpClose}>Cancel</Button>
