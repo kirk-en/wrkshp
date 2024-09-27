@@ -1,16 +1,12 @@
 import "./HomePage.scss";
-import { Paper, Typography, Box, Button, Avatar, Grid } from "@mui/material";
-
-import { Instagram } from "@mui/icons-material";
+import { Typography, Grid } from "@mui/material";
+import artistData from "../../../artistData.json";
 import logo from "../../assets/logo.png";
 import VisitCard from "../../components/VisitCard/VisitCard";
 import "./HomePage.scss";
 
-const generateProfileImageUrl = () => {
-  return `https://thispersondoesnotexist.com/?random=${Math.random()}`;
-};
-
-const artists = [
+const artists = artistData;
+const _artistsOld = [
   {
     name: "Egon Schiele",
     id: 1000808291,

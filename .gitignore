@@ -27,3 +27,4 @@ dist-ssr
 .gitignore
 *.psd
 reference
+artistData.json
