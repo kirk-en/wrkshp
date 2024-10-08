@@ -28,3 +28,7 @@ dist-ssr
 *.psd
 reference
 artistData.json
+/public/**/*.zip
+public/zz-directory-structure
+# Local Netlify folder
+.netlify
